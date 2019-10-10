@@ -14,10 +14,17 @@ let testCasesOne: [(Double, Double)] = [
     (input: 99, expectedOutput: 198)
 ]
 
-//for (input, expectedOutput) in testCasesOne {
-//    let output = double(input)
-//    assert(output == expectedOutput, "Was expecting \(expectedOutput) for input \(input), but got \(output)")
-//}
+func double(num: Double) -> Double {
+    let result = (num * 2)
+    return result
+}
+
+//print(double(num: 99))
+
+for (input, expectedOutput) in testCasesOne {
+    let output = double(num: input)
+    assert(output == expectedOutput, "Was expecting \(expectedOutput) for input \(input), but got \(output)")
+}
 
 
 
@@ -26,6 +33,14 @@ let testCasesOne: [(Double, Double)] = [
 // Write a function named smallest(of:and:) that takes in two Doubles and returns the smaller number
 
 // Your function here
+func smallest(numOne: Double, numTwo: Double) -> Double {
+    if numOne < numTwo {
+    return numOne
+} else {
+    return numTwo
+}
+}
+
 
 let testCasesTwo: [(Double, Double, Double)] = [
     (inputOne: 8.0, inputTwo: 3.0, expectedOutput: 3.0),
@@ -34,10 +49,10 @@ let testCasesTwo: [(Double, Double, Double)] = [
     (inputOne: 2.3, inputTwo: 2.03, expectedOutput: 2.03)
 ]
 
-//for (inputOne, inputTwo, expectedOutput) in testCasesTwo {
-//    let output = smallest(of: inputOne, and: inputTwo)
-//    assert(output == expectedOutput, "Was expecting \(expectedOutput) for inputs \(inputOne) and \(inputTwo) but got \(output)")
-//}
+for (inputOne, inputTwo, expectedOutput) in testCasesTwo {
+    let output = smallest(numOne: inputOne, numTwo: inputTwo)
+    assert(output == expectedOutput, "Was expecting \(expectedOutput) for inputs \(inputOne) and \(inputTwo) but got \(output)")
+}
 
 // Question Three
 
@@ -52,10 +67,19 @@ let testCasesThree: [([Double], Double)] = [
     (input: [-4,-59,-348,-34,-4], expectedOutput: -348),
 ]
 
-//for (input, expectedOutput) in testCasesThree {
-//    let output = smallestValue(in: input)
-//    assert(output == expectedOutput, "Was expecting \(expectedOutput) for input \(input), but got \(output)")
-//}
+func smallestValue(num1: [Double]) -> Double {
+    let lowValue = num1.min() ?? 0
+    return lowValue
+}
+
+
+
+
+
+for (input, expectedOutput) in testCasesThree {
+    let output = smallestValue(num1: input)
+    assert(output == expectedOutput, "Was expecting \(expectedOutput) for input \(input), but got \(output)")
+}
 
 
 // Question Four
@@ -63,6 +87,9 @@ let testCasesThree: [([Double], Double)] = [
 // Write a function named occurrances(of:in:) that counts how many characters in a String match a specific character.
 
 // Your function here
+
+
+
 
 let testCasesFour: [(Character, String, Int)] = [
     (inputOne: "l", inputTwo: "hello", expectedOutput: 2),
@@ -82,6 +109,15 @@ let testCasesFour: [(Character, String, Int)] = [
 // Write a function called removeNils(from:) that takes an array of optional Ints and returns an array with them unwrapped with any nil values removed.
 
 // Your function here
+func removeNils(from numbers: [Int?]) -> [Int] {
+    var nonNilNumbers = [Int]()
+    for num in numbers {
+        if let validNum = num {
+            nonNilNumbers.append(validNum)
+        }
+    }
+    return nonNilNumbers
+}
 
 let testCasesFive: [([Int?], [Int])] = [
     (input: [1, nil, 9, nil, 10, nil], expectedOutput: [1,9,10]),
@@ -90,8 +126,8 @@ let testCasesFive: [([Int?], [Int])] = [
     (input: [], expectedOutput: []),
 ]
 
-//for (input, expectedOutput) in testCasesFive {
-//    let output = removeNils(from: input)
-//    assert(output == expectedOutput, "Was expecting \(expectedOutput) for input \(input), but got \(output)")
-//}
+for (input, expectedOutput) in testCasesFive {
+    let output = removeNils(from: input)
+    assert(output == expectedOutput, "Was expecting \(expectedOutput) for input \(input), but got \(output)")
+}
 
